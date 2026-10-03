@@ -1,0 +1,15 @@
+node_modules/
+.sites-runtime/
+.tmp/
+.env*
+bridge/config.local.json
+
+# Local workspace records and hosting configuration are not part of public releases.
+/AGENTS.md
+/MEMORY.md
+/PRODUCT.md
+/.openai/
+/tools/user-goal.txt
+*.blend
+*.blend1
+*.log

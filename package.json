@@ -1,0 +1,20 @@
+{
+  "name": "battery-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/local-bridge.mjs",
+    "check": "node tools/verify.mjs",
+    "credits": "node tools/third-party-notices.mjs",
+    "credits:check": "node tools/third-party-notices.mjs --check",
+    "prepare:opensource": "node tools/prepare-open-source.mjs"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  }
+}

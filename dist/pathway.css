@@ -1,0 +1,163 @@
+/* A single mechanism surface. All selectors stay inside the lesson/modal. */
+.modal.pathway-modal {
+  width: min(1180px, 100%);
+  max-width: 1180px;
+  padding: 24px 30px 22px;
+  background: linear-gradient(145deg, #272727e8, #111111f5 54%, #191919ed);
+}
+.modal.pathway-modal > h2 { margin-bottom: 12px; font-size: 25px; font-weight: 500; }
+.pathway-lesson {
+  --pl-ink: #f1f1f1;
+  --pl-muted: #b7b7b7;
+  --pl-ion: #a9cdcf;
+  --pl-electron: #ddb184;
+  --pl-energy: #d2c8b8;
+  color: var(--pl-ink);
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  column-gap: 30px;
+  font-family: 'Lab Latin', 'Lab Sans', 'Microsoft YaHei', 'Segoe UI Symbol', sans-serif;
+  font-size: 17px;
+  min-width: 0;
+}
+.pl-stage-wrap {
+  min-width: 0;
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  position: relative;
+  /* The reflection belongs to the mechanism surface, not to individual steps. */
+  background: radial-gradient(ellipse at 48% 52%, #bcc9ca09, transparent 66%);
+}
+.pl-diagram { width: 100%; height: auto; max-height: 450px; overflow: visible; display: block; }
+.pl-diagram text { font-family: inherit; fill: #eeeeee; font-weight: 400; }
+.pl-diagram .pl-label { font-size: 21px; }
+.pl-diagram .pl-load-label { font-size: 22px; fill: #d8d8d8; }
+.pl-diagram .pl-material-label { font-size: 20px; fill: #c4d3d4; }
+.pl-diagram .pl-contact-label { font-size: 17px; fill: #c9cecf; }
+.pl-diagram .pl-energy-label { fill: var(--pl-energy); }
+.pl-diagram .pl-ion-label { fill: var(--pl-ion); font-size: 20px; }
+.pl-diagram .pl-electron-label { fill: var(--pl-electron); font-size: 19px; }
+.pl-diagram .pl-reaction-label { font-size: 19px; fill: #c6cbcb; }
+.pl-diagram .pl-temperature { fill: #d1c8bb; }
+.pl-diagram .pl-species { font-size: 22px; font-weight: 500; }
+.pl-diagram .pl-source-symbol { font-size: 38px; fill: #dedcd5; }
+.pl-tab { fill: #a8a49d; stroke: #e1d9ce; stroke-width: 1; }
+.pl-catalyst { fill: #d6ccae; opacity: .56; }
+.pl-leader { fill: none; stroke: #6c7b7c; stroke-width: 1; }
+.pl-membrane-strand { stroke: #a1cbcd; stroke-width: 1; stroke-opacity: .18; }
+.pl-source-lines { stroke: #d1cdc4; stroke-width: 3; stroke-opacity: .2; }
+.pl-thermo-detail { stroke: #b3bcbd; stroke-width: 3; stroke-opacity: .3; }
+.pl-wire-shadow { stroke: #050505; stroke-width: 13; fill: none; stroke-linejoin: round; }
+.pl-wire { stroke: #81766a; stroke-width: 6; fill: none; stroke-linejoin: round; }
+.pl-load rect { fill: #292725; stroke: #b29c83; stroke-width: 1.5; }
+.pl-load path { fill: none; stroke: #e4c7a7; stroke-width: 2; stroke-linejoin: round; }
+.pl-route { fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.pl-route-electron { stroke: var(--pl-electron); }
+.pl-route-ion, .pl-route-hole { stroke: var(--pl-ion); stroke-dasharray: 4 6; }
+.pl-route-energy { stroke: var(--pl-energy); stroke-width: 2; stroke-dasharray: 6 8; }
+.pl-arrow-electron { stroke: var(--pl-electron); }
+.pl-arrow-ion, .pl-arrow-hole { stroke: var(--pl-ion); }
+.pl-arrow-energy { stroke: var(--pl-energy); }
+.pl-feed { fill: none; stroke: #b8bcba; stroke-width: 1.8; }
+.pl-bond { fill: none; stroke: #bdc5c6; stroke-width: 4; }
+.pl-atom-h { fill: #dbe7e7; stroke: #f3fbfb; stroke-width: 1; }
+.pl-atom-o { fill: #5c7275; stroke: #aac4c6; stroke-width: 1.2; }
+.pl-particle-electron { fill: #2f251c; stroke: var(--pl-electron); stroke-width: 1.5; }
+.pl-particle-ion, .pl-particle-hole { fill: #182c2e; stroke: var(--pl-ion); stroke-width: 1.5; }
+.pl-particle-energy { fill: #27251f; stroke: var(--pl-energy); stroke-width: 1.2; }
+.pl-diagram .pl-particle-text { font-size: 16px; fill: #f5f5f2; font-weight: 500; }
+.pl-stored-ion { fill: #b7d1d1; fill-opacity: .72; stroke: #d4eded; stroke-width: .8; }
+.pl-pair-link { stroke: #c8c4b7; stroke-width: 2; stroke-dasharray: 3 3; }
+.pl-interface { fill: none; stroke: #c5c9bd; stroke-width: 2; stroke-dasharray: 6 4; }
+.pl-junction { fill: #bdd5d5; fill-opacity: .13; stroke: #c2d4d5; stroke-opacity: .4; stroke-dasharray: 5 5; }
+.pl-heat-through { fill: none; stroke: var(--pl-energy); stroke-width: 2; }
+.pl-reading { align-self: center; min-width: 0; padding: 20px 0; }
+.pl-reading-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin-bottom: 17px; }
+.pl-step-count { color: #ddd4c8; font-size: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pl-state { font-size: 15px; color: var(--pl-muted); }
+.pathway-lesson .pl-title { font-size: clamp(23px, 2.1vw, 28px); line-height: 1.5; font-weight: 500; margin: 0 0 16px; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.modal .pathway-lesson .pl-explanation { font-size: 17px; line-height: 1.85; color: #d0d0d0; margin: 0; max-width: 42ch; }
+.modal .pathway-lesson .pl-equation { font-family: 'Lab Latin', 'Lab Sans', 'Segoe UI Symbol', sans-serif; font-size: 20px; font-weight: 500; line-height: 1.75; color: #e5d4be; margin: 19px 0 0; overflow-wrap: anywhere; }
+.pl-timeline { grid-column: 1 / -1; display: flex; gap: 5px; width: 100%; margin: 8px 0 3px; }
+.pathway-lesson .pl-segment {
+  flex: 1; min-width: 0; min-height: 44px; padding: 7px 0 3px;
+  display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
+  border: 0; border-radius: 0; box-shadow: none; background: none; color: #828282;
+}
+.pathway-lesson .pl-segment:hover { background: none; color: var(--pl-ink); }
+.pl-segment-line { display: block; width: 100%; height: 3px; overflow: hidden; background: #424242; }
+.pl-segment-line > span { display: block; width: 100%; height: 100%; background: var(--pl-electron); transform: scaleX(0); transform-origin: left center; }
+.pl-segment-number { font-size: 15px; line-height: 1.5; font-variant-numeric: tabular-nums; padding-left: 1px; }
+.pl-segment[data-current="true"] { color: #e4c5a4; }
+.pl-segment[data-current="true"] .pl-segment-line { background: #8c7760; }
+.pl-segment[data-visited="true"] { color: #c4b39f; }
+.pl-controls { grid-column: 1 / -1; display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.pathway-lesson .pl-controls button {
+  min-height: 46px; padding: 10px 18px; border: 1px solid #ffffff33; border-radius: 5px;
+  color: var(--pl-ink); font: inherit; font-size: 16px; line-height: 1.5;
+  background: linear-gradient(145deg, #ffffff09, #ffffff02);
+  box-shadow: inset 0 1px 0 #ffffff12;
+}
+.pathway-lesson .pl-controls button:hover:not(:disabled) { border-color: #ffffff70; background: #ffffff0c; }
+.pathway-lesson .pl-controls button:active:not(:disabled) { background: #ffffff14; }
+.pathway-lesson .pl-controls button:disabled { opacity: .38; cursor: default; }
+.pathway-lesson .pl-controls .pl-play { min-width: 128px; border-color: #bfa0837a; }
+.pathway-lesson .pl-controls .pl-restart { margin-left: auto; }
+.pathway-lesson button:focus-visible, .pathway-lesson summary:focus-visible, .pathway-lesson a:focus-visible { outline: 2px solid #ddb184; outline-offset: 4px; }
+.modal .pathway-lesson .pl-note { grid-column: 1 / -1; margin: 17px 0 0; font-size: 15px; line-height: 1.7; color: var(--pl-muted); }
+.pl-references { grid-column: 1 / -1; border-top: 1px solid #ffffff1c; margin-top: 15px; padding-top: 2px; font-size: 16px; }
+.pathway-lesson .pl-references summary { cursor: pointer; min-height: 44px; padding: 10px 0; color: #d0d0d0; font-size: 16px; }
+.modal .pathway-lesson .pl-materials { margin: 10px 0 12px; font-size: 16px; line-height: 1.75; color: #bababa; }
+.pl-references ul { margin: 0 0 10px; padding-left: 20px; }
+.pl-references li { margin: 8px 0; line-height: 1.65; overflow-wrap: anywhere; }
+.pl-references a { color: #d5c0a8; text-decoration-color: #756554; text-underline-offset: 3px; }
+@media (min-width: 1000px) and (max-height: 820px) {
+  .modal.pathway-modal { padding-top: 19px; padding-bottom: 17px; max-height: 94dvh; }
+  .pl-diagram { max-height: 355px; }
+  .pl-reading { padding-block: 10px; }
+  .pl-reading-top { margin-bottom: 10px; }
+  .pathway-lesson .pl-title { font-size: 25px; margin-bottom: 10px; }
+  .modal .pathway-lesson .pl-explanation { font-size: 16px; line-height: 1.75; }
+  .modal .pathway-lesson .pl-equation { margin-top: 13px; font-size: 18px; }
+  .modal .pathway-lesson .pl-note { margin-top: 12px; }
+  .pl-references { margin-top: 10px; }
+}
+@media (max-width: 860px) {
+  .modal.pathway-modal { padding: 20px 22px; }
+  .pathway-lesson { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .pl-stage-wrap { max-width: 660px; width: 100%; justify-self: center; }
+  .pl-diagram { max-height: 340px; }
+  .pl-reading { padding: 15px 0 4px; }
+  .pl-reading-top { margin-bottom: 9px; }
+  .pathway-lesson .pl-title { font-size: 24px; margin-bottom: 9px; }
+  .modal .pathway-lesson .pl-explanation { max-width: none; font-size: 17px; line-height: 1.75; }
+  .modal .pathway-lesson .pl-equation { font-size: 19px; margin-top: 11px; }
+}
+@media (max-width: 520px) {
+  .modal.pathway-modal { padding: 20px 15px 17px; max-height: calc(100dvh - 24px); }
+  .modal.pathway-modal > h2 { font-size: 23px; padding-right: 66px; }
+  .pl-stage-wrap { margin: 0 -9px; width: calc(100% + 18px); }
+  .pl-diagram { max-height: none; }
+  .pl-diagram .pl-label { font-size: 24px; }
+  .pl-diagram .pl-material-label, .pl-diagram .pl-ion-label, .pl-diagram .pl-load-label { font-size: 23px; }
+  .pl-diagram .pl-contact-label { font-size: 20px; }
+  .pl-diagram .pl-electron-label { font-size: 20px; }
+  .pl-diagram .pl-particle-text { font-size: 18px; }
+  .pl-reading { padding-top: 12px; }
+  .pl-reading-top { gap: 4px 12px; }
+  .pl-state { font-size: 14px; }
+  .pathway-lesson .pl-title { font-size: 23px; }
+  .pl-controls { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 8px; }
+  .pathway-lesson .pl-controls button { min-width: 0; padding: 10px 8px; font-size: 16px; }
+  .pathway-lesson .pl-controls .pl-play { min-width: 0; }
+  .pathway-lesson .pl-controls .pl-restart { grid-column: 1 / -1; justify-self: end; margin: 1px 0 0; min-height: 44px; padding-inline: 14px; }
+  .modal .pathway-lesson .pl-note { margin-top: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pathway-lesson *, .pathway-lesson *::before, .pathway-lesson *::after { animation: none !important; transition: none !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .modal.pathway-modal { background: #151515; backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+

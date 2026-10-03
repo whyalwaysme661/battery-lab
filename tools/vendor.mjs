@@ -1,0 +1,7 @@
+import {copyFile,mkdir,readFile,readdir,unlink} from 'node:fs/promises';
+import path from 'node:path';
+const src=path.resolve('node_modules/three/examples/jsm'),dst=path.resolve('dist/vendor/addons'),needed=new Set();
+async function include(rel){rel=path.normalize(rel);if(needed.has(rel))return;needed.add(rel);const file=path.resolve(src,rel);if(!file.startsWith(src+path.sep))throw Error('Invalid vendor path');const text=await readFile(file,'utf8');for(const m of text.matchAll(/(?:from\s*|import\s*)['"](\.[^'"]+)['"]/g))await include(path.normalize(path.join(path.dirname(rel),m[1])));await mkdir(path.dirname(path.join(dst,rel)),{recursive:true});await copyFile(file,path.join(dst,rel));}
+await mkdir(dst,{recursive:true});await copyFile('node_modules/three/LICENSE','dist/vendor/LICENSE');await include('controls/OrbitControls.js');await include('loaders/GLTFLoader.js');
+async function prune(dir){if(!path.resolve(dir).startsWith(dst))throw Error('Invalid cleanup target');for(const ent of await readdir(dir,{withFileTypes:true})){const file=path.join(dir,ent.name);if(ent.isDirectory())await prune(file);else if(!needed.has(path.relative(dst,file)))await unlink(file);}}
+await prune(dst);await copyFile('node_modules/three/build/three.module.js','dist/vendor/three.module.js');await copyFile('node_modules/three/build/three.core.js','dist/vendor/three.core.js');console.log('Prepared '+needed.size+' browser addon modules');
